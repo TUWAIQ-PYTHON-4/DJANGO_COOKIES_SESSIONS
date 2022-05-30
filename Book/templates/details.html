@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<br>
+  <div class="container">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{Books.id}}</th>
+      <td>{{Books.title}}</td>
+      <td>{{Books.description}}</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+    <br>
+<form method="POST"  >
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1"  class="form-label">Name</label>
+    <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Comment</label>
+    <input type="text"   name="comment" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3">
+    <label  class="form-label">Date</label>
+    <input type="date"   name="date" class="form-control" >
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+{% endblock %}

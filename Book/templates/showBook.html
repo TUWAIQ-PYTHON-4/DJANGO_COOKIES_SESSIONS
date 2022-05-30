@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% block content %}
+    <br>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Details</th>
+    </tr>
+  </thead>
+      {% for book in Books %}
+  <tbody>
+    <tr>
+      <th scope="row">{{book.id}}</th>
+      <td>{{book.title}}</td>
+      <td>{{book.description}}</td>
+      <td><a href="/addComment/{{book.id}}"> <button type="submit" class="btn btn-outline-success">See Detail</button></a></td>
+    </tr>
+  </tbody>
+      {% endfor %}
+</table>
+
+<button type="button" class="btn btn-outline-success">Success</button>
+
+{% endblock %}
