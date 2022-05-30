@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if display %}
+
+{% for book in books %}
+
+<div class="row">
+
+    <div class="card">
+        <p>
+            <h2>{{ book.title }}</h2>
+            <h2>{{ book.desc }}</h2>
+               <h5><a href="{% url 'books:book_detail' book.id %}"> > show details </a></h5>
+        </p>
+    </div>
+
+</div>
+
+{% endfor %}
+{% endif %}
+
+
+</body>
+</html>
