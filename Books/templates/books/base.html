@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title%} Books Website {% endblock%}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'books/style/main.css' %}">
+</head>
+
+<body>
+    <header>
+
+        <div class="nav-bar row" >
+            <h2>Books</h2>
+        </div>
+
+    </header>
+
+
+    <div class="content">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+
+
+    <footer>
+        <div class="footer-strap">
+            <strong>All Rights Reserved Books 2022</strong>
+            <form role="form" method="post">
+                {% csrf_token %}
+
+                <input id="fontsize" name="fontsize" type="number" value="{{current_font}}">
+                <button type="submit"  style="font-size:{{current_font}}">Change Font Size</button>
+                       </form>
+        </div>
+    </footer>
+
+</body>
+</html>

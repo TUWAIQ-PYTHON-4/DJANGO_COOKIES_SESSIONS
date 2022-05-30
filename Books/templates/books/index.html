@@ -1,0 +1,25 @@
+{% extends 'books/base.html' %}
+{% block title%} Books {% endblock%}
+
+
+{%block content%}
+
+<h1>Book Titles</h1>
+
+{% if books %}
+{% for book in books%}
+<div class="row">
+
+    <div class="card">
+        <p>
+            <h2>{{ book.title }}</h2>
+
+            <h5><a href="{% url 'books:book_detail' book.id %}"> > show details </a></h5>
+        </p>
+    </div>
+    {% endfor %}
+    {% endif %}
+{% endblock%}
+
+
+</div>
