@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} Add new Book {% endblock %}
+
+{% block content %}
+
+<h2>Add Book:</h2>
+<form method="POST" action="{% url 'add_book' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="Create Movie" />
+</form>
+
+
+{% endblock %}

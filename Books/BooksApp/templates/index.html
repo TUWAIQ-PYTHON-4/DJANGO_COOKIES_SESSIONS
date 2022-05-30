@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} Books | Home {% endblock %}
+{% block content %}
+
+<h1>Books page</h1>
+
+{% if display %}
+
+{% for book in books %}
+
+<div class="row">
+
+    <div class="card">
+        <p>
+            <h2>{{ book.book_name }}</h2>
+            <h6>{{ book.description }}</h6>
+            <h5><a href="{% url 'book_detail' book.id %}"> > show details </a></h5>
+        </p>
+    </div>
+
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+{% endblock %}
