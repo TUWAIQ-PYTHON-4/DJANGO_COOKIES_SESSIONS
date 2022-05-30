@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Add new Book {% endblock %}
+
+{% block content %}
+
+ <h2>Add Book:</h2>
+<div class="form">
+    <form method="POST" action="{% url 'books:add' %}" enctype="multipart/form-data">
+   {% csrf_token %}
+         {{ form|crispy }}
+    <input type="submit" value="Create Book" />
+</form>
+
+</div>
+
+{% endblock %}
