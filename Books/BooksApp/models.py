@@ -8,7 +8,7 @@ class Books(models.Model):
     description = models.TextField()
 
     def __str__(self):
-        return self.title+''+self.description
+        return self.title
 
 
 class Comments(models.Model):
