@@ -8,6 +8,7 @@ urlpatterns = [
     path('addComment/<int:id>', views.addComment, name='addComment'),
     path('addComment2', views.addComment2, name='addComment2'),
     path('showComment', views.showComment, name='showComment'),
-    path('setcookie/',views.setcookie),
+    path('setcookie/', views.setcookie),
+    path('fav/<int:id>', views.fav, name="fav"),
 
 ]

@@ -1,6 +1,6 @@
 from django.template import response
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, resolve_url
 from .models import AddBooks, AddComment
 from .forms import AddBookForm, AddCommentForm
 
@@ -8,9 +8,16 @@ from .forms import AddBookForm, AddCommentForm
 # Create your views here.
 
 def home(request):
+    if 'fav_only' in request.GET:
+        fav_book = request.session.get("fav", [])
+        book_list = AddBooks.objects.filter(id__in=fav_book)
+    else:
+        book_list = AddBooks.objects.all()
     Comments = AddComment.objects.all()
-    Comment = {'Comments': Comments}
-    return render(request, 'index.html',Comment )
+    Comment = {"movies": book_list,'Comments': Comments}
+    response = render(request, 'details.html', Comment)
+    return response
+
 
 def setcookie(request):
     Comments = AddComment.objects.all()
@@ -19,7 +26,6 @@ def setcookie(request):
     font_size = request.GET.get('font_size')
     if font_size == 'big':
         font_size = '40px'
-        print("ghdgfhgefg")
 
     elif font_size == 'small':
         font_size = '10px'
@@ -55,7 +61,18 @@ def addBook(request):
 
 def addComment(request, id):
     Books = AddBooks.objects.get(id=id)
+    # get the session
+    session_content = request.session.get("fav_movies", None)
+    print(session_content)
     return render(request, 'details.html', {'Books': Books})
+
+
+def fav(request, id):
+    request.session["fav"] = request.session.get("fav", []) + [id]
+    print(request.session["fav"])
+    return redirect(resolve_url("addComment"))
+
+    return redirect(resolve_url("details"))
 
 
 def showComment(request):

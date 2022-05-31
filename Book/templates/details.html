@@ -25,6 +25,9 @@
     <br>
 <form method="POST" action="" >
   {% csrf_token %}
+  <h4><a href="/fav/{{Books.id}} ">Add To Favorites</a></h4>
+
+
   <div class="mb-3">
     <label for="exampleInputEmail1"  class="form-label">Name</label>
     <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
