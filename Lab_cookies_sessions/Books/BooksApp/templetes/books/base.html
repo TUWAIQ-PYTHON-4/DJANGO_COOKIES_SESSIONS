@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>{% block title %} Books {% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'movies/style/main.css' %}">
+
+</head>
+
+
+<body>
+
+    <header>
+
+        <div class="nav-bar row" >
+            <h2>Books Library</h2>
+        </div>
+
+    </header>
+    
+    <div class="content">
+
+        {% block content %}
+
+        <h1>Recently Added Books</h1>
+
+        {% endblock %}
+
+    </div>
+
+
+    <footer>
+        <div class="footer-strap">
+            <strong>All Rights Reserved for Books Library 2022</strong>
+        </div>
+    </footer>
+
+</body>
+
+
+</html>
