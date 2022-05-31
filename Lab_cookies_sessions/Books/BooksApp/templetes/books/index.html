@@ -1,0 +1,57 @@
+{% extends 'movies/base.html' %}
+{% block title %} The index  {% endblock %}
+
+{% block content %}
+
+
+
+
+{%for item in context %}
+
+<div class="row">
+
+    <div class="card">
+          <ul>
+              <li><strong>Book Titel: </strong>{{item.title}}</li>
+              <li><strong>Book Description: </strong>{{item.desc}} </li>
+          </ul>
+    </div>
+
+</div>
+
+
+
+
+{% endfor %}
+
+
+
+<br>
+<br>
+
+<h4>Comments : </h4>
+
+{% for comment in  book.comment_set.all %}
+
+<br>
+<br>
+
+<p>
+    <strong>{{ comment.name }}</strong>
+    <p>
+        {{ comment.content }}
+    </p>
+</p>
+
+{% endfor %}
+
+<br>
+
+<h3> Add Comment :</h3>
+<form action="{% url 'books:index' book.id %}" method="POST" >
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input value="Submit Comment" type="submit" />
+</form>
+{% endblock %}
