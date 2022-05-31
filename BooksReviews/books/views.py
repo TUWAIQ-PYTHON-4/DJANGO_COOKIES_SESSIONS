@@ -8,7 +8,7 @@ def index(request: HttpRequest):
     book_list = Book.objects.all()
 
     context = {"books": book_list, "display": True}
-    response = render(request, 'books/index.html', context)
+    response = render(request, 'index.html', context)
 
     # add session of fav book
     request.session["fav_books"] = ["Harry Potter", "The Secret"]

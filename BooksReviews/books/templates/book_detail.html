@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>{{ book.title }}</h1>
+
+<h3>Book description:</h3>
+<p>
+    {{ book.desc }}
+</p>
+<br>
+
+<h4>Reviews : </h4>
+
+{% for comment in  book.comment_set.all %}
+
+<br>
+<br>
+
+<p>
+    <strong>{{ book.name }}</strong>
+    <p>
+        {{ book.content }}
+    </p>
+</p>
+
+{% endfor %}
+
+<br>
+
+<h3> Add Review :</h3>
+<form action="{% url 'books:book_detail' movie.id %}" method="POST" >
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input value="Submit Review" type="submit" />
+</form>
+
+{% endblock %}
