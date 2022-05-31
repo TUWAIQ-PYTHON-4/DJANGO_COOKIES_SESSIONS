@@ -1,0 +1,17 @@
+{% extends 'Books/base.html' %}
+{% block title %} The index  {% endblock %}
+
+{% block content %}
+
+<h1>Just a random books page</h1>
+
+{% if display %}
+
+{% for movie in Books %}
+<h2>{{ book.title }}</h2>
+
+{% endfor %}
+
+{% endif %}
+
+{% endblock %}
