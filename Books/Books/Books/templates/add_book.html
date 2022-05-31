@@ -1,0 +1,18 @@
+{% extends 'Books/base.html' %}
+
+{% block title %} Add new Book {% endblock %}
+
+{% block content %}
+
+<h2> Add new Book: </h2>
+
+<form method="POST" action="{% url 'Books:add_book' %}" >
+    {% csrf_token %}
+    <label>Book Title:</label> <input name="title" type="text" />
+    <label>Book Desc:</label> <input name="desc" type="text" />
+    <label>Book Rating:</label> <input name="rating" type="text" />
+
+    <input type="submit" value="Create Book" />
+
+
+{% endblock %}
