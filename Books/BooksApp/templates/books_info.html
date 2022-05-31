@@ -2,31 +2,34 @@
 
 {% block content %}
 
-<h1>{{ book.title }}</h1>
-<h3>Book Info:</h3>
-<p>
-    {{ book.description }}
-</p>
+<h3>{{ book.title }}</h3>
+<h5>Book Information: </h5>
+<p>{{ book.description }}</p>
+<br>
+<h5 style="text-align: right"> <a href="{% url 'add_favorite' book.id %}">Add To Favorites</a> </h5>
 <br><hr>
-<h4>Comments : </h4>
 
-{% for comment in book.comment_set.all %}
-<br>
-<br>
+<h4>Comments... </h4> <br><br>
+
+{% if not book.comments.all %}
+    <p>No Comments Yet ... </p>
+{% else %}
+    {% for comment in book.comments.all %}
 <p>
-    <strong>{{ comment.name }}</strong>
-    <p>
-        {{ comment.comment }}
-    </p>
+            <strong>@{{ comment.name }}</strong>
+            <p>{{ comment.comment }}</p>
 </p>
-{% endfor %}
+
+    {% endfor %}
+{% endif %}
+
 <br>
-<h3> Add Comment :</h3>
+<h4> Add Comment :</h4>
 <form action="{% url 'books_info' book.id %}" method='POST' >
     {% csrf_token %}
     {{ form.as_p }}
-
     <input value="Submit Comment" type="submit" />
 </form>
+<br>
 
 {% endblock %}
