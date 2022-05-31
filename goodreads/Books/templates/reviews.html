@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% crispy example_form example_form.helper %}
+ {% block title %}
+    <title>Reviews</title>
+ {% endblock%}
+
+  {% block content %}
+
+<a href = "{% url 'add_fav_books' book_id %}">Add to favored</a>
+<table>
+    <tr>
+        <td>
+         <b> Title:</b> {{book_info.title}}
+        </td>
+    </tr>
+    <tr>
+        <td>
+        <b>Description:</b> {{book_info.description}}
+        </td>
+    </tr>
+
+</table>
+
+<table>
+{% for item in commints %}<tr>
+<td>{{item.name}} <small>{{item.date}}</small></td>
+<td>{{item.comment}}</td></tr>
+{% endfor %}</table>
+
+<form method="POST">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button type="submit">submit</button>
+</form>
+ {% endblock %}
