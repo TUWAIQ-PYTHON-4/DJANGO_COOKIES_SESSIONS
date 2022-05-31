@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, redirect, resolve_url
 from django.http import HttpRequest, HttpResponse
 from .models import Books, Comment
@@ -18,9 +17,9 @@ def index(request: HttpRequest):
 
     signed_cookie = request.get_signed_cookie("important", None)
 
-    if "dark_mode" in request.GET:
+    if "Large_font" in request.GET:
         # setting a cookie
-        response.set_signed_cookie("important", "some value")
+        response.set_signed_cookie("style.css","value")
     return response
 
 
@@ -36,7 +35,7 @@ def add_books(request: HttpRequest):
     return render(request, 'books/add_book.html', {"form": form})
 
 
-def list_books(request: HttpRequest ):
+def list_books(request: HttpRequest):
     if request.GET:
         print(request.GET)
     books = ["it ends with us", "A little life", " Rum punch"]
