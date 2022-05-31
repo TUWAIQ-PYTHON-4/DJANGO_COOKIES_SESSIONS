@@ -1,0 +1,16 @@
+{% extends 'books/base.html' %}
+
+
+{% block content %}
+<h3>Your Favorite Book Info:</h3>
+{% for fav in fav_book %}
+
+
+
+<h1>{{ fav.title }}</h1>
+<p>
+    {{ fav.description }}
+
+</p>
+{% endfor %}
+{% endblock %}

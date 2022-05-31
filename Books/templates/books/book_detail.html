@@ -29,7 +29,9 @@
 
 <br>
 
-<h3> Add Comment :</h3>
+<h3><a href="{% url 'books:fav_book' book.id %}"> > Add to Favorite </a></h3>
+
+<h3> Add Comment: </h3>
 <form action="{% url 'books:book_detail' book.id %}" method="POST" >
     {% csrf_token %}
     {{ form.as_p }}

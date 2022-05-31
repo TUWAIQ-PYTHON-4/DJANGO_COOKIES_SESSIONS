@@ -15,11 +15,12 @@
             <h2>{{ book.title }}</h2>
 
             <h5><a href="{% url 'books:book_detail' book.id %}"> > show details </a></h5>
+
         </p>
     </div>
     {% endfor %}
     {% endif %}
+    </div>
 {% endblock%}
 
 
-</div>

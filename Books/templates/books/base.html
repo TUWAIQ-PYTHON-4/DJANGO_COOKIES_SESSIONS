@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <title>{% block title%} Books Website {% endblock%}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'books/style/main.css' %}">
+    <style>
+       body {
+        font-size: {{font_size}}
+        }
+    </style>
+
 </head>
 
 <body>
@@ -32,8 +38,7 @@
             <form role="form" method="post">
                 {% csrf_token %}
 
-                <input id="fontsize" name="fontsize" type="number" value="{{current_font}}">
-                <button type="submit"  style="font-size:{{current_font}}">Change Font Size</button>
+                <strong>Change Font Size <a href="?font_size=big"> Big </a> <a href="?font_size=small"> Small </a></strong>
                        </form>
         </div>
     </footer>
