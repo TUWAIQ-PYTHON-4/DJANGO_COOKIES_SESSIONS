@@ -5,11 +5,10 @@ class Books(models.Model):
 
     title = models.CharField(max_length=512)
     desc = models.TextField()
-
-
    
     def __str__(self) -> str:
         return self.title
+
 
 
 class Comment(models.Model):
