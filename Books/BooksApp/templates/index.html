@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} <title> index page </title> {% endblock %}
+{% block content %}
+    {% if display %}
+        {% for book in books_list %}
+            <br>
+            <div class="row">
+                <div class="card">
+                    <p>
+                        <h3> {{ book.title }} </h3>
+                        <h5><a href="{% url 'books_info' book.id %}">  Book Details </a></h5>
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
