@@ -40,4 +40,3 @@ def books_info(request: HttpRequest, book_id: int):
             added_comment.save()
         else:
             print(comment_form.errors)
-    return render(request, 'books_info.html.html')
