@@ -5,10 +5,22 @@ from .models import Book, Comment
 
 
 def index(request: HttpRequest):
-    book_list = Book.objects.all()
+
+    if 'favs_only' in request.GET:
+        favs_books = request.session.get("favs", [])
+        book_list = Book.objects.filter(id__in=favs_books)
+    else:
+        book_list = Book.objects.all()
+
 
     context = {"books": book_list, "display": True}
-    return render(request, 'index.html', context)
+
+    response= render(request, 'index.html', context)
+
+
+    if 'font_size' in request.GET:
+        response.set_cookie('font_size', request.GET['font_size'])
+    return response
 
 
 def add_book(request: HttpRequest):
@@ -30,7 +42,7 @@ def list_books(request: HttpRequest, book_index):
 
     books = ["Titanic", "Monsters Inc.", "Toy Story"]
     print(book_index)
-    context = {"movie": books[int(book_index)]}
+    context = {"book": books[int(book_index)]}
     return render(request, 'list.html', context)
 
 
@@ -53,3 +65,10 @@ def book_detail(request: HttpRequest, book_id):
     context = {"book": book, "form": CommentForm()}
 
     return render(request, 'book_detail.html', context)
+
+
+def add_favorite(request: HttpRequest, book_id):
+    request.session["favs"] = request.session.get("favs", []) + [book_id]
+    print(request.session["favs"])
+
+    return redirect(resolve_url("books:index"))
