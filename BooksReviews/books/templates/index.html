@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Books</title>
+</head>
+<body>
+
+{% if book_list %}
+
+<div>
+
+    {% for book in book_list %}
+
+    <div>
+
+        <h4><a href="{% url 'reviews:book_detail' book.id %}">
+        {{ book.name }}
+
+        <h5>{{ book.comment.count }} comments</h5>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+    <p>No books are available.</p>
+
+{% endif %}
+
+</body>
+</html>

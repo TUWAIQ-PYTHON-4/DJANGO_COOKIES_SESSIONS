@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>{% block title %} IReadBook Site {% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style/main.css' %}">
+
+</head>
+
+
+<body>
+
+    <header>
+
+        <div class="nav-bar row" >
+            <h2>IReadBook</h2>
+        </div>
+
+    </header>
+
+    <div class="content">
+
+        {% block content %}
+
+        <h1>Recently Added Books</h1>
+
+        {% endblock %}
+
+    </div>
+
+
+    <footer>
+        <div class="footer-strap">
+            <strong>All Rights Reserved IReadBook 2022</strong>
+        </div>
+    </footer>
+
+</body>
+
+
+</html>
