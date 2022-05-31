@@ -17,12 +17,12 @@ def index (request : HttpRequest) :
 def add_Book(request : HttpRequest):
 
     if request.method == 'POST':
-        movieModelForm = BooksModelForm(request.POST)
+        Bookform= BooksModelForm(request.POST)
 
-        if movieModelForm.is_valid():
-            Book = BooksModelForm.save() 
+        if Bookform.is_valid():
+            Bookform.save() 
             return redirect('index') 
-
+    
     form = BooksModelForm()
     return render(request, 'add_Books.html', {"form" : form})
 
