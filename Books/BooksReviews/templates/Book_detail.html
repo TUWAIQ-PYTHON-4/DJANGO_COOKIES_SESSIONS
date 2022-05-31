@@ -5,6 +5,7 @@
 
 <h4>{{ Book.title}}</h4>
 <h4>{{ Book.desc}}</h4>
+<h4><a href="{% url 'add_favorite' Book.id %}">Add To Favorites</h4></a>
 
 <h4>Comments : </h4>
 

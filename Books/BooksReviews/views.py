@@ -1,3 +1,4 @@
+from pydoc import resolve
 from django.http import HttpRequest
 from django.shortcuts import render , redirect
 from .models import Books , Reviews
@@ -8,13 +9,28 @@ from .forms import BooksModelForm , CommentForm
 
 
 def index (request : HttpRequest) :
-    Books_list = Books.objects.all()
+    if 'favs_only' in request.GET:
+        favs_Book = request.session.get("favs", [])
+        Books_list = Books.objects.filter(id__in = favs_Book)
+    else:
+         Books_list = Books.objects.all()
+        
     context = {'Books':Books_list , 'display' : True }
-    return render(request , 'index.html' , context)
+
+    response = render(request , 'index.html' , context)
+
+    if 'font_size' in request.GET:
+        response.set_cookie('font_size', request.GET['font_size'])
+
+
+    return response
+
 
 
 
 def add_Book(request : HttpRequest):
+
+
 
     if request.method == 'POST':
         Bookform= BooksModelForm(request.POST)
@@ -46,3 +62,10 @@ def Book_detail(request:HttpRequest, Book_id):
     context = {"Book" : Book, "form" : CommentForm()}
 
     return render(request, 'Book_detail.html', context)
+
+
+def add_favorite(request:HttpRequest , Book_id):
+
+    request.session['favs'] = request.session.get('favs',[])+ [Book_id]
+    print(request.session['favs'])
+    return redirect(('index'))
