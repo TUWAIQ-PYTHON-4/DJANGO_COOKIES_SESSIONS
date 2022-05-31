@@ -1,0 +1,8 @@
+Add new Movie
+
+<h2>Add book:</h2>
+<form method="POST" action="{% url 'books:add_book' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="add book" />
+</form>
