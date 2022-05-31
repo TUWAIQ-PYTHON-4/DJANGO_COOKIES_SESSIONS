@@ -1,0 +1,28 @@
+{% extends 'movies/base.html' %}
+
+
+{% block content %}
+
+<img src="{{ movie.image.url }}" />
+<h1>{{ book.title }}</h1>
+
+<h3>book Info:</h3>
+<p>
+    {{ book.desc }}
+
+</p>
+<br>
+
+{% endfor %}
+
+<br>
+
+<h3> Add Comment :</h3>
+<form action="{% url movie_detail' movie.id %}" method="POST" >
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input value="Submit Comment" type="submit" />
+</form>
+
+{% endblock %}
