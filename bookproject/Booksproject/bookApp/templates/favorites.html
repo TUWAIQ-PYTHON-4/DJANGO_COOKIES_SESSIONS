@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %} The index  {% endblock %}
+
+{% block content %}
+<center>
+<h1>Just a random books page</h1>
+<h2>The Books :</h2>
+<h5><a href="/favorites/" class="link-secondary" >Go to you favorites book ,:)</a></h5>
+{%if books %}
+
+<form method="POST" class="post-form" action="/index" xmlns="http://www.w3.org/1999/html">
+        {% csrf_token %}
+<table class="table">
+    <thead>
+    <tr>
+        <th>Book Title</th>
+        <th>Book Description</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for book in books %}
+    <tr>
+        <td>{{book.title}}</td>
+        <td>{{book.description}}</td>
+        <td>
+<!--               <a href="/favorites_book/{{ book.id }}"><span class="link-secondary" >Add favorites </span></a>-->
+<!--               <a href="{% url 'favorites' book.id %}"><span class="link-secondary" >Add favorites </span></a>-->
+                <form>
+                    <button formaction="{% url 'bookapp:favorites-detail' book.id %}">Add favorites</button>
+                </form>
+
+        </td>
+    </tr>
+    {% endfor%}
+    </tbody>
+</table>
+
+    <h5><a href="/favorites_book/" class="link-secondary" >Add New Record</a></h5>
+    </center>
+
+{%endif%}
+<style>
+    body{
+    font-size:{{font_size}} !important;
+}
+</style>
+
+{% endblock %}
