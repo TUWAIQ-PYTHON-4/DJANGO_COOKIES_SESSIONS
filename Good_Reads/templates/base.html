@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %} Good Reads {% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    </head>
+    <body>
+        <header>
+            <div class="nav-bar row" >
+                <h2>Good Reads</h2>
+            </div>
+        </header>
+        <div class="content">
+            {% block content %}
+    
+            {% endblock %}
+        </div>
+        <footer>
+            <div class="footer-strap">
+                <strong>All Rights Reserved IMDB 2022</strong>
+                <strong><a href="?bigger_size=true">Activate Bigger size</a></strong>
+                {% if "?bigger_size==true" %}
+                    <p>hi</p>
+                {% endif %}
+            </div>
+        </footer>
+    </body>
+</html>
