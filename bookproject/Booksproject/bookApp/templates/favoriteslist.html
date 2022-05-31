@@ -27,9 +27,9 @@
         <td>
            <p> <a href="/comment/{{ book.id }}"><span class="link-secondary" >Comment</span></a></p>
 <!--               <a href="/favorites_book/{{ book.id }}"><span class="link-secondary" >Add favorites </span></a>-->
-<!--                <form>-->
-<!--                    <button formaction="{% url 'bookapp:favorites-detail' book.id %}">remove favorites</button>-->
-<!--                </form>-->
+           <form>
+              <button formaction="{% url 'bookapp:favorites-detail' book.id %}">remove favorites</button>-->
+<          </form>
 
         </td>
     </tr>
@@ -40,6 +40,7 @@
     <h5><a href="/add/" class="link-secondary" >Add New Record</a></h5>
 {% else %}
     <h2>You have no favorite books</h2>
+
 {%endif%}
 <style>
     body{

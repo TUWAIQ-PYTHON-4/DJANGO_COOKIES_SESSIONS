@@ -4,9 +4,10 @@
 {% block title %} The index  {% endblock %}
 
 {% block content %}
-
+<center>
 <h1>Just a random books page</h1>
 <h2>The Books :</h2>
+<h5><a href="/favorites/" class="link-secondary" >Go to you favorites book ,:)</a></h5>
 {%if books %}
 
 <form method="POST" class="post-form" action="/index" xmlns="http://www.w3.org/1999/html">
@@ -38,6 +39,7 @@
 </table>
 
     <h5><a href="/favorites_book/" class="link-secondary" >Add New Record</a></h5>
+    </center>
 
 {%endif%}
 <style>

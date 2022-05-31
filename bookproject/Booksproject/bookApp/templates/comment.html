@@ -1,40 +1,47 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load crispy_forms_tags %}
-
-
+<center>
+<br>
 <h1>{{ book.title }}</h1>
-
 <h3>Book Info:</h3>
 <p>
     {{ book.description }}
 </p>
 <br>
 
-<h4>Comments : </h4>
-
-{% for comment in  book.comment_set.all %}
-
 <br>
-<br>
-
-<p>
-    <strong>{{ comment.name }}</strong>
-    <p>
-        {{ comment.content }}
-    </p>
-</p>
-
-{% endfor %}
-
-<br>
-
-<h3> Add Comment :</h3>
-<form action="{% url 'books:comment' book.id %}" method="POST" >
+<h3> Add Comment :</h3><br><br>
     {% csrf_token %}
-        {{ form|crispy }}
+{{ form|crispy }}
+
+<form calss="cemment"   action="{% url 'books:comment' book.id %}" method="POST" >
 
     <input value="Submit Comment" type="submit" />
 </form>
+<br><br>
+<h4>Comments : </h4>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>name </th>
+        <th>comment </th>
+        <th>date</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for comment in  book.comment_set.all %}
+    <tr>
+        <td>{{ comment.name }}</td>
+        <td> {{ comment.content }}</td>
+        <td> {{comment.date}} </td>
+    </tr>
+    {% endfor%}
+    </tbody>
+</table>
+
+</center>
+
 
 {% endblock %}

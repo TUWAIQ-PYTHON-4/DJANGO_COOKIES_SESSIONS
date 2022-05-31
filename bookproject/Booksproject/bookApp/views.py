@@ -45,7 +45,8 @@ def comment(request , book_id):
     if request.method == "POST":
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
-            added_comment = Comment(book=book, name=comment_form.cleaned_data["name"],content=comment_form.cleaned_data["content"])
+            #نسوي حفط بس بطريقة مو مباشرة نقدر نختصر --> **.cleaned_data
+            added_comment = Comment(book=book, name=comment_form.cleaned_data["name"],content=comment_form.cleaned_data["content"] )
             added_comment.save()
         else:
             print(comment_form.errors)
