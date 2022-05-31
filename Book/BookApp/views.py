@@ -1,12 +1,37 @@
+from django.template import response
+
 from django.shortcuts import render, redirect
-from .models import AddBooks , AddComment
+from .models import AddBooks, AddComment
 from .forms import AddBookForm, AddCommentForm
 
 
 # Create your views here.
 
 def home(request):
-    return render(request, 'index.html')
+    Comments = AddComment.objects.all()
+    Comment = {'Comments': Comments}
+    return render(request, 'index.html',Comment )
+
+def setcookie(request):
+    Comments = AddComment.objects.all()
+    Comment = {'Comments': Comments}
+
+    font_size = request.GET.get('font_size')
+    if font_size == 'big':
+        font_size = '40px'
+        print("ghdgfhgefg")
+
+    elif font_size == 'small':
+        font_size = '10px'
+
+    else:
+        Comment['font_size'] = '16px'
+
+    Comment['font_size'] = font_size
+
+    response = render(request, "index.html", Comment)
+    response.set_cookie('font_size', font_size)
+    return response
 
 
 def showBook(request):
@@ -33,6 +58,11 @@ def addComment(request, id):
     return render(request, 'details.html', {'Books': Books})
 
 
+def showComment(request):
+    Comments = AddComment.objects.all()
+    return render(request, 'index.html', {'Comments': Comments})
+
+
 def addComment2(request):
     if request.method == "POST":
         form = AddCommentForm(request.POST)
@@ -45,7 +75,3 @@ def addComment2(request):
     else:
         form = AddCommentForm()
     return render(request, 'details.html', {'form': form})
-
-def showComment(request):
-    Comments = AddComment.objects.all()
-    return render(request, 'index.html', {'Comments': Comments})
