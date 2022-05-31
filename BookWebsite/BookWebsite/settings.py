@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-c+7fo3tyzx0vn(kb-$$b_iukb1)s+(aqu*mqm7)nhhnj%uv$e*'
+SECRET_KEY = 'django-insecure-ea!cn#t4dz&316ynbwdr#65b+5kqu%7+rgdj9=rts4h0jtxt%)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'BookApp'
+    'BookApp',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +123,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CRISPY_TEMPLATE_PACK='bootstrap4'
