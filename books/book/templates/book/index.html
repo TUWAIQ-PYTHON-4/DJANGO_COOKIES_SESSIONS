@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %} The index  {% endblock %}
+<body>
+{% block content %}
+
+<h1>Just a random books page</h1>
+
+{% if display %}
+
+{% for book in books %}
+<div class="row">
+    <div class="card">
+
+
+<h2>{{ book.title }}</h2>
+      <h2>{{ book.desc }}</h2>
+        <p>
+            <h2>{{ book.title }}</h2>
+            <h2>{{ book.desc }}</h2>
+               <h5><a href="{% url 'books:book_detail' book.id %}"> > show details </a></h5>
+        </p>
+    </div>
+</div>
+{% endfor %}
+
+{% endif %}
+
+{% endblock %}
+</body>

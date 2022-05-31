@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>{% block title %}  - book website {% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'books/style/main.css' %}">
+
+</head>
+
+
+<body>
+
+    <header>
+
+        <div class="nav-bar row" >
+            <h2>Book</h2>
+        </div>
+
+    </header>
+
+    <div class="content">
+
+        {% block content %}
+
+        <h1>Latest book News</h1>
+
+        {% endblock %}
+
+    </div>
+
+
+    <footer>
+        <div class="footer-strap">
+            <strong>All Rights Reserved IMDB 2022</strong>
+            <strong><a style="color:white;" href="?dark_mode=true">Activate Dark Mode</a></strong>
+        </div>
+    </footer>
+
+</body>
+
+
+</html>
