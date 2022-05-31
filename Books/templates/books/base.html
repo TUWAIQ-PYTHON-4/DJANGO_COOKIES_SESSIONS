@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title%} Books Website {% endblock%}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'books/style/main.css' %}">
+    <style>
+       body {
+        font-size: {{font_size}}
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+
+        <div class="nav-bar row" >
+            <h2>Books</h2>
+        </div>
+
+    </header>
+
+
+    <div class="content">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+
+
+    <footer>
+        <div class="footer-strap">
+            <strong>All Rights Reserved Books 2022</strong>
+            <form role="form" method="post">
+                {% csrf_token %}
+
+                <strong>Change Font Size <a href="?font_size=big"> Big </a> <a href="?font_size=small"> Small </a></strong>
+                       </form>
+        </div>
+    </footer>
+
+</body>
+</html>
