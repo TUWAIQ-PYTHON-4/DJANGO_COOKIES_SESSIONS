@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>{% block title %} Books website {% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Books/style/main.css' %}">
+    {% if 'font_size' in request.COOKIES and request.COOKIES.font_size == 'Big' %}
+<style>
+body {
+font-size: 200%;
+}
+</style>
+{% endif %}
+
+</head>
+
+
+<body>
+
+    <header>
+
+        <div class="nav-bar row" >
+            <h2>Books : </h2>
+        </div>
+
+    </header>
+
+    <div class="content">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+
+
+  <footer>
+        <div class="footer-strap">
+            <strong> <em>Copy Right 2022</em> </strong>
+            <strong><a style="color:pink" href="?font_size=Big">Big Font</a></strong> |
+            <strong><a style="color:pink" href="?font_size=Small">Small Font</a></strong>
+        </div>
+    </footer>
+
+
+
+</body>
+</html>
