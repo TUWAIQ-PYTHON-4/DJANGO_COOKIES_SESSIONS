@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for i in book %}
+<div class="border p-3 mb-3 mt-4 mr-5 ml-5">
+    <h3><a class="text-dark" href="{% url 'post' i.id %}">{{i.title}}</a></h3>
+    <p>{{i.desc}}</p>
+</div>
+{% endfor %}
+{% endblock content %}
