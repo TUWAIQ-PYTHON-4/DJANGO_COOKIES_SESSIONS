@@ -20,19 +20,10 @@ def add_book(request: HttpRequest):
 
 def index(request: HttpRequest):
     book_list = Books.objects.all()
-
     context = {"book_list": book_list, "display": True}
     response = render(request, 'index.html', context)
-
-    # adding a session
     request.session["fav_books"] = ["book1", "book2"]
-
-    # we use signed cookie to protect the cookie from maniulation
     signed_cookie = request.get_signed_cookie("important", None)
-
-    if "dark_mode" in request.GET:
-        # setting a cookie
-        response.set_signed_cookie("important", "some value")
     return response
 
 
