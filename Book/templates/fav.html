@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<br>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Fav</th>
+    </tr>
+  </thead>
+      {% for book in f %}
+  <tbody>
+    <tr>
+      <th scope="row">{{book.id}}</th>
+      <td>{{book.name}}</td>
+    </tr>
+  </tbody>
+      {% endfor %}
+</table>
+
+{% endblock %}
