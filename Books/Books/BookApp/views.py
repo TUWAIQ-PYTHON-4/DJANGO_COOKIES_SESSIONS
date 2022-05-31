@@ -17,9 +17,11 @@ def index(request: HttpRequest):
 
     signed_cookie = request.get_signed_cookie("important", None)
 
-    if "Large_font" in request.GET:
+    if "font_size" in request.GET:
+        response = render((request, 'books/index.html', context))
         # setting a cookie
-        response.set_signed_cookie("style.css","value")
+
+        response.set_signed_cookie("style.css", "value")
     return response
 
 

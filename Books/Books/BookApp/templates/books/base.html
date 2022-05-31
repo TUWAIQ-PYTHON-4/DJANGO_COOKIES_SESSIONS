@@ -7,6 +7,14 @@
     <title>{% block title %} Books website {% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'Books/style.css' %}">
 
+ {% if 'font_size' in request.COOKIES and request.COOKIES.font_size=='Big'%}
+    <style>
+        body{
+        font-size:120%
+        }
+
+</style>
+{% endif %}
 </head>
 
 
@@ -34,7 +42,7 @@
     <footer>
         <div class="footer-strap">
 
-            <strong><a href="?Large_font=true">Large font</a></strong>
+            <strong><a href="'?font_size=Big">Large font</a></strong>
         </div>
     </footer>
 
