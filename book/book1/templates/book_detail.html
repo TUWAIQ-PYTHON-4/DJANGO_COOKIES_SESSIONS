@@ -1,4 +1,4 @@
-
+{% block content %}
 <h1>{{ book.title }}</h1>
 
 <h3>Book Info:</h3>
@@ -7,7 +7,7 @@
 
 <h4>Comments : </h4>
 
-{% for comment in  book.comment_set.all %}
+{% for comment in  books %}
 
 <br>
 <br>
@@ -30,3 +30,8 @@
 
     <input value="Submit Comment" type="submit" />
 </form>
+
+{% endblock %}
+
+<h4><a href="{% url 'books:add_favorite' book.id %}">Add To Favorites</a></h4>
+

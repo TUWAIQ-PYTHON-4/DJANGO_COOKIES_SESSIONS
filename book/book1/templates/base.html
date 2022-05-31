@@ -1,0 +1,21 @@
+{% if 'font_size' in request.COOKIES and request.COOKIES.font_size == 'Big' %}
+<style>
+body {
+font-size: 100%;
+}
+</style>
+{% else %}
+<style>
+body {
+font-size: 50%;
+}
+</style>
+{% endif %}
+
+
+
+        {% block content %}
+
+
+
+        {% endblock %}
