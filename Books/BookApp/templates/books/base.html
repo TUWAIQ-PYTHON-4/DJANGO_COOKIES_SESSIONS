@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>{% block title %} Books website {% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Books/style.css' %}">
+
+ {% if 'font_size' in request.COOKIES and request.COOKIES.font_size=='Big'%}
+    <style>
+        body{
+        font-size:120%
+        }
+
+</style>
+{% endif %}
+</head>
+
+
+<body>
+
+    <header>
+
+        <div class="nav-bar row" >
+            <h2>Books : </h2>
+        </div>
+
+    </header>
+
+    <div class="content">
+
+        {% block content %}
+
+        <h1>Latest Book News</h1>
+
+        {% endblock %}
+
+    </div>
+
+
+    <footer>
+        <div class="footer-strap">
+
+            <strong><a href="'?font_size=Big">Large font</a></strong>
+        </div>
+    </footer>
+
+</body>
+
+
+</html>
