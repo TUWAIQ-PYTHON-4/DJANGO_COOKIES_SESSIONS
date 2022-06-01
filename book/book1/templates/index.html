@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+{% block title %} The index  {% endblock %}
+{% if display %}
+
+{% for book in books %}
+
+<div class="row">
+        <p>
+            <h2>{{ book.title }}</h2>
+
+            <h5><a href="{% url 'books:book_detail' book.id %}"> > show details </a></h5>
+        </p>
+    </div>
+
+{% endfor %}
+
+</table>
+
+{%endif%}
+<strong><a href="?font_size=Big">Change t
+o Big Font</a></strong> <br>
+<strong><a href="?font_size=Sm
+all">Change to Small Font</a></strong>
+{% endblock %}
