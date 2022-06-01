@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Home-Page
+{% endblock %}
+
+{% block content %}
+
+<div class ="container">
+<ul>
+    {% for i in all_books %}
+            <li><strong>Book title:</strong> {{ i.title }}          </li>
+            <li><strong>Book description:</strong> {{i.description}}    </li>
+    {% comment %}
+            <li><a href="{% url 'bookapp:add_comment' book.id %}"> show details </a><</li>
+    {% endcomment %}
+            <br>
+            <br>
+            <br>
+    {% endfor %}
+
+</ul>
+
+</div>
+
+{% endblock %}

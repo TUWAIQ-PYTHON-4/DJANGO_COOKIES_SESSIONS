@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} details page
+{% endblock %}
+
+
+{% block content %}
+<center >
+<h3> book details page </h3>
+    <br>
+
+    <div class ="container">
+<ul>
+    {% for i in all_books %}
+            <li><strong>Book title:</strong> {{ i.title }}          </li>
+            <li><strong>Book description:</strong> {{i.description}}    </li>
+            <br>
+            <br>
+            <br>
+    {% endfor %}
+
+</ul>
+<H3> Add comments: </H3>
+</div>
+<form method="post" >
+{% csrf_token %}
+{{ form.as_p }}
+<p>
+<input type="submit" value="add comment!">
+</p>
+</form>
+</center>
+{% endblock %}
