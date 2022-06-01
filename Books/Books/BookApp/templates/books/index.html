@@ -1,0 +1,28 @@
+{% extends 'books/base.html' %}
+{% block title %} The index  {% endblock %}
+
+{% block content %}
+
+
+{% if display %}
+
+{% for book in Books %}
+
+<div class="row">
+
+    <div class="card">
+        <img src="{{ books.image.url }}" />
+        <p>
+            <h2>{{ book.title }}</h2>
+
+            <h5><a href="{% url 'books:book_detail' book.id %}"> > show details </a></h5>
+        </p>
+    </div>
+
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+{% endblock %}
