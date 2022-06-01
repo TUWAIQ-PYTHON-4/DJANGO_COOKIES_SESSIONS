@@ -1,17 +1,11 @@
 {% block content %}
 <h1>{{ book.title }}</h1>
-
 <h3>Book Info:</h3>
 <p>
     {{ book.desc }}
-
 <h4>Comments : </h4>
-
 {% for comment in  books %}
-
 <br>
-<br>
-
 <p>
     <strong>{{ comment.name }}</strong>
     <p>
@@ -20,9 +14,7 @@
 </p>
 
 {% endfor %}
-
 <br>
-
 <h3> Add Comment :</h3>
 <form action="{% url 'books:book_detail' book.id %}" method="POST" >
     {% csrf_token %}
@@ -30,8 +22,6 @@
 
     <input value="Submit Comment" type="submit" />
 </form>
-
 {% endblock %}
-
 <h4><a href="{% url 'books:add_favorite' book.id %}">Add To Favorites</a></h4>
 

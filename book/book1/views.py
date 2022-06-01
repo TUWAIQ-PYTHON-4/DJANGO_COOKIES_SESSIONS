@@ -22,9 +22,9 @@ def index(request: HttpRequest):
 
     if 'favs_only' in request.GET:
         favorite_book = request.session.get("favs", [])
-        movie_list = book.objects.filter(id__in=favorite_book)
+        book_list = book.objects.filter(id__in=favorite_book)
     else:
-        movie_list = book.objects.all()
+        book_list = book.objects.all()
 
     return response
 
@@ -73,7 +73,7 @@ def add_books(request : HttpRequest):
             return redirect(resolve_url("books:index"))
 
     form = bookModelForm()
-    return render(request, 'add_book.html', {"form" : form})
+    return render(request, 'books:add_book.html', {"form" : form})
 
 def book_detail(request:HttpRequest, book_id):
     books = book.objects.get(pk=book_id)
@@ -89,4 +89,4 @@ def book_detail(request:HttpRequest, book_id):
 
     context = {"Comment" : Comment, "form" : CommentForm()}
 
-    return render(request, 'book_detail.html', context)
+    return render(request, 'bppks:book_detail.html', context)
