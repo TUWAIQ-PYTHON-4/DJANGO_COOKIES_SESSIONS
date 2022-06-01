@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ book.title }}</h1>
+<h3>Book Info:</h3>
+<p>
+    {{ book.description }}
+</p>
+<br><hr>
+<h4>Comments : </h4>
+
+{% for comment in book.comment_set.all %}
+<br>
+<br>
+<p>
+    <strong>{{ comment.name }}</strong>
+    <p>
+        {{ comment.comment }}
+    </p>
+</p>
+{% endfor %}
+<br>
+<h3> Add Comment :</h3>
+<form action="{% url 'books_info' book.id %}" method='POST' >
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input value="Submit Comment" type="submit" />
+</form>
+
+{% endblock %} 
