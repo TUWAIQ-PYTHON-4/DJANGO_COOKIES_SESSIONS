@@ -13,9 +13,11 @@
 <br>
 <h4>Book Rating : {{ book.rating }}</h4>
 <br>
+<h4><a href="{% url 'add_favorite' book.id %}">Add favorite</a></h4>
+<br>
 <h4>Comments : </h4>
 <br>
-{% for comment in  book.review_set.all %}
+{% for comment in book.review_set.all %}
 
 <br>
 <br>

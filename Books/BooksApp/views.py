@@ -3,22 +3,30 @@ from .models import Books,Review
 from .forms import BookModelForm,ReviewForm
 
 def index(request):
-    books_list = Books.objects.all()
+    
+    if 'favorites' in request.GET:
+        favs_book = request.session.get("favorites", [])
+        books_list = Books.objects.filter(id__in = favs_book)
+    else:
+        books_list = Books.objects.all()
+
+
     context = {'books': books_list,'display':True, 'font_size':False}
     response = render(request, 'index.html', context)
 
-    #adding a session
-    #fav_books = request.session["fav_books"]
-    #fav_books = [books_list.get]
+    #Cookies
+    if 'font_size' in request.GET:
+        response.set_cookie('fontsize', request.GET['font_size'])
+
+    if 'favorites' in request.GET:
+        favs_book = request.session.get("favorites", [])
+        books_list = Books.objects.filter(id__in = favs_book)
+    else:
+        books_list = Books.objects.all()
     
-    if "fontsize" in request.COOKIES:
-        print("changed to True")
-        context['font_size'] = True
-
-    if "fontsize" in request.GET:
-        response.set_cookie("fontsize", "true")
-
     return response
+
+    
 
 
 
@@ -37,9 +45,6 @@ def add_book(request):
 def book_detail(request,book_id):
 
     book = Books.objects.get(pk=book_id)
-    #get the session data or none
-    #session_content = request.session.get("fav_books", None)
-    #print(session_content)
 
     if request.method == "POST":
         review_form = ReviewForm(request.POST)
@@ -51,3 +56,7 @@ def book_detail(request,book_id):
     
     context = {"book": book, "form": ReviewForm()}
     return render(request, 'book_detail.html', context)
+
+def add_favorite(request, book_id):
+    request.session["favorites"] = request.session.get("favorites",[]) + [book_id]
+    return redirect('index')

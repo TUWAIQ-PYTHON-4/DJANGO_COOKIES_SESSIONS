@@ -1,6 +1,6 @@
 {% load static %}
 <!doctype html>
-<html lang="en" class="{% if font_size %} fs-1 {% endif %}">
+<html lang="en" class="{% if 'fontsize' in request.COOKIES and request.COOKIES.fontsize == 'Big' %} fs-1 {% endif %}">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -21,6 +21,7 @@
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><a href="{% url 'index' %}" class="nav-link px-2 text-secondary">Home</a></li>
             <li><a href="{% url 'add_book' %}" class="nav-link px-2 text-white">Add Book</a></li>
+            <li><a href="?favorites " class="nav-link px-2 text-white">My favorite</a></li>
             <!--li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
             <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
             <li><a href="#" class="nav-link px-2 text-white">About</a></li-->
@@ -62,8 +63,8 @@
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-            <li class="nav-item"><a href="?fontsize=true" class="nav-link px-2 text-muted">Font Size</a></li>
+            <li class="nav-item"><a href="?font_size=Small" class="nav-link px-2 text-muted">Font Size | Small</a></li>
+            <li class="nav-item"><a href="?font_size=Big" class="nav-link px-2 text-muted">Font Size | Big</a></li>
           </ul>
           <p class="text-center text-muted">© 2022 AA, Inc</p>
         </footer>
