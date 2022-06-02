@@ -12,6 +12,8 @@
     {{ book.desc }}
 
 </p>
+
+<h4> <a href="{% url 'books:add_favorite' book.id %}">Add To Favorites </h4> </a>
 <br>
 
 
@@ -28,7 +30,7 @@
         {{ comment.content }}
     </p>
 </p>
-<h4> <a href="{% url 'books:add_favorite' book.id %}">Add To Favorites </h4> </a>
+
 
 {% endfor %}
 
