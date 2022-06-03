@@ -1,0 +1,21 @@
+{% extends 'Books/base.html' %}
+{% load static %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+       <h1> Welcome To Your Library</h1>
+
+       {% for book in books %}
+<div class="card row row-cols-1 row-cols-md-3 g-3" style="width: 18rem;">
+  <img src="{{ book.image.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{book.title}}</h5>
+    <a href="{% url 'detail' book.id %}" class="btn btn-secondary">Book Detail</a>
+  </div>
+</div>
+    {% endfor %}
+
+
+{% endblock %}
