@@ -1,0 +1,44 @@
+{% extends 'Books/base.html' %}
+{% load static %}
+
+{% block title %} Favorite Page {% endblock %}
+
+
+{% block content %}
+
+<h3 class="card-title">{{book.title}}</h3>
+
+<div class="card" style="width: 18rem;">
+  <img src="{{ book.image.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{book.title}}</h5>
+    <p class="card-text">{{book.desc}}</p>
+  </div>
+</div>      
+
+<br>
+<h4><a href="{% url 'add_favorite' book.id %}" class="btn btn-secondary">Add To Favorites</h4></a>
+<br>
+
+<h4>Comments : </h4>
+{% for comment in comments %}
+
+
+<p>
+    <strong>{{ comment.name }}</strong>
+    <p>
+        {{ comment.comment }}
+    </p>
+    {{ comment.date }}
+</p>
+<br>
+
+{% endfor %}
+<h3> Add Comment :</h3>
+<form action="{% url 'detail' book.id %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input value="Submit Comment" type="submit" class="btn btn-secondary" />
+</form>
+{% endblock %}
