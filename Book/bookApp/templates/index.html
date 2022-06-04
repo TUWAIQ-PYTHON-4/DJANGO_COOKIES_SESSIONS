@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} The index  {% endblock %}
+
+{% block content %}
+
+ <h3 class=" pd-3 mb-6 mt-5 mr-5 ml-5">  Books </h3>
+   
+{% for i in book %}
+ <div class="border p-3 mb-3 mt-4 mr-5 ml-5">
+    <h3><a class="text-dark" href="">{{i.title}}</a></h3>
+    <p>{{i.desc}}</p>
+    <h5><a href="{% url 'book' i.id %}" > show details </a></h5>
+    <h5><a href="{% url 'add_favorite' i.id %}" > add favorite </a></h5>
+
+</div>
+  
+{% endfor %}
+<h3 class=" pd-3 mb-6 mt-5 mr-5 ml-5"> favorite  Books </h3>
+<a href="{% url 'delete_favorite' %}" >delete all favorites</a>
+{% for b in favs_books %}
+ <div class="border p-3 mb-3 mt-4 mr-5 ml-5">
+    <h3><a class="text-dark" href="">{{b.title}}</a></h3>
+    <p>{{b.desc}}</p>
+    <h5><a href="{% url 'book' b.id %}" > show details </a></h5>
+    <h5><a href="{% url 'delete_favorite' %}" > delete favorite </a></h5>
+
+</div>
+  
+{% endfor %}
+<!--   url 'post' i.id  -->
+
+{% endblock %}
