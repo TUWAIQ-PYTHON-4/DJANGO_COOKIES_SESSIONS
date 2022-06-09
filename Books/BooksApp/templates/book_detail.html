@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+<h1>{{ book.book_name }}</h1>
+
+<h5>Book Info:</h5>
+<p>
+    {{ book.description }}
+
+</p>
+<br>
+<h4>Book Rating : {{ book.rating }}</h4>
+<br>
+<h4><a href="{% url 'add_favorite' book.id %}">Add favorite</a></h4>
+<br>
+<h4>Comments : </h4>
+<br>
+{% for comment in book.review_set.all %}
+
+<br>
+<br>
+
+<p>
+    <strong>{{ comment.name }}</strong>
+    <p>
+        {{ comment.comment }}
+    </p>
+</p>
+
+{% endfor %}
+
+<br>
+
+<h3> Add Comment :</h3>
+<form action="{% url 'book_detail' book.id %}" method="POST" >
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input value="Submit Comment" type="submit" />
+</form>
+</div>
+{% endblock %}
