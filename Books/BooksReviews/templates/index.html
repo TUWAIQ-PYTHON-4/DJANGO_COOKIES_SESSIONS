@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% if display %}
+
+{% for Book in Books %}
+
+    <p>
+
+        <h1>
+            {{Book.title}}
+        </h1>
+
+        <h5><a href="{% url 'Book_detail' Book.id %}"> > show book detail </a></h5>
+       
+    </p>
+
+    {% endfor %}
+
+    {% endif %}
+    
+  
+{% endblock %}
